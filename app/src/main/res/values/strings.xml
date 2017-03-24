@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Water Polo Tracker</string>
+    <string name="app_name">Water polo Tracker</string>
 
     <!-- Game related titles and counters -->
     <string name="game_timer">04:52</string>
@@ -12,14 +12,14 @@
     <!-- Home team related strings -->
     <string name="home_name">Home</string>
     <string name="home_score_count">3</string>
-    <string name="home_foul_count">1</string>
+    <string name="home_foul_count">5</string>
     <string name="home_timeout_timer1">00:17</string>
     <string name="home_timeout_timer2">00:03</string>
 
     <!-- Guest team related strings -->
     <string name="guest_name">Guest</string>
     <string name="guest_score_count">1</string>
-    <string name="guest_foul_count">0</string>
+    <string name="guest_foul_count">3</string>
     <string name="guest_timeout_timer1">00:15</string>
     <string name="guest_timeout_timer2">00:01</string>
 
@@ -28,8 +28,7 @@
     <string name="goal">Goal</string>
     <string name="possess">Possess</string>
     <string name="reset">Reset</string>
-    <string name="water_polo_ball_description">Water polo ball indicating ball possession</string>
 
     <!-- Image description -->
-
+    <string name="water_polo_ball_description">Water polo ball indicating ball possession</string>
 </resources>

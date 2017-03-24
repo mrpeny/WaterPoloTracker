@@ -6,4 +6,74 @@
 
     </style>
 
+    <!-- Header styles -->
+    <style name="general_header_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
+    <style name="game_time_style" parent="general_header_style">
+
+    </style>
+
+    <style name="period_title_style" parent="general_header_style">
+
+    </style>
+
+    <style name="period_counter_style" parent="general_header_style">
+
+    </style>
+
+    <style name="period_timer_style" parent="general_header_style">
+
+    </style>
+
+    <!-- Content styles -->
+    <style name="general_content_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="ball_style" parent="general_content_style">
+
+    </style>
+
+    <style name="team_name_style" parent="general_content_style">
+
+    </style>
+
+    <style name="team_score_count_style" parent="general_content_style">
+
+    </style>
+
+    <style name="team_foul_title_style" parent="general_content_style">
+
+    </style>
+
+    <style name="team_foul_counter_style" parent="general_content_style">
+
+    </style>
+
+    <style name="team_timeout_title_style" parent="general_content_style">
+
+    </style>
+
+    <style name="team_timeout_timer_style" parent="general_content_style">
+
+    </style>
+
+    <!-- Button bar styles -->
+    <style name="button_bar_linear_layout_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="general_button_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
 </resources>
