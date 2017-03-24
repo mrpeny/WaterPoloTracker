@@ -4,43 +4,167 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.mrpeny.waterpolotracker.MainActivity"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    tools:context="com.example.mrpeny.waterpolotracker.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <!-- Put your content here-->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/game_time_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/game_timer" />
+
+            <TextView
+                android:id="@+id/period_title_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/game_time_text_view"
+                android:text="@string/period_time_title" />
+
+            <TextView
+                android:id="@+id/period_count_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/game_time_text_view"
+                android:layout_toEndOf="@id/period_title_text_view"
+                android:layout_toRightOf="@id/period_title_text_view"
+                android:text="@string/period_count" />
+
+            <TextView
+                android:id="@+id/period_timer_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/period_title_text_view"
+                android:text="@string/period_timer" />
+
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/water_polo_ball_description"
+                    android:src="@drawable/water_polo_ball_16" />
 
                 <TextView
+                    android:id="@+id/home_name_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="First Linear Layout"/>
+                    android:text="@string/home_name" />
+
+                <TextView
+                    android:id="@+id/home_score_count_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/home_score_count" />
+
+                <TextView
+                    android:id="@+id/home_foul_title_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/foul_title" />
+
+                <TextView
+                    android:id="@+id/home_foul_counter_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/home_foul_count" />
+
+                <TextView
+                    android:id="@+id/home_timeout_title_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/timeout_title" />
+
+                <TextView
+                    android:id="@+id/home_timeout_timer1_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/home_timeout_timer1" />
+
+                <TextView
+                    android:id="@+id/home_timeout_timer2_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/home_timeout_timer2" />
+
             </LinearLayout>
 
+            <View
+                android:layout_width="@dimen/divider_width"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/water_polo_ball_description"
+                    android:src="@drawable/water_polo_ball_16"
+                    android:visibility="invisible" />
 
                 <TextView
+                    android:id="@+id/guest_name_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Second Linear Layout"/>
+                    android:text="@string/guest_name" />
+
+                <TextView
+                    android:id="@+id/guest_score_count_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/guest_score_count" />
+
+                <TextView
+                    android:id="@+id/guest_foul_title_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/foul_title" />
+
+                <TextView
+                    android:id="@+id/guest_foul_counter_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/home_foul_count" />
+
+                <TextView
+                    android:id="@+id/guest_timeout_title_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/timeout_title" />
+
+                <TextView
+                    android:id="@+id/guest_timeout_timer1_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/guest_timeout_timer1" />
+
             </LinearLayout>
 
         </LinearLayout>
@@ -51,11 +175,42 @@
             android:layout_weight="1">
 
             <Button
+                android:id="@+id/start_game_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="GOAL"
                 android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"/>
+                android:layout_centerVertical="true"
+                android:text="@string/start" />
+
+            <Button
+                android:id="@+id/home_goal_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/goal" />
+
+            <Button
+                android:id="@+id/guest_goal_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/goal" />
+
+            <Button
+                android:id="@+id/reset_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/reset" />
+
+            <Button
+                android:id="@+id/home_possession_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/possess" />
+
+            <Button
+                android:id="@+id/guest_possession_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/goal" />
         </RelativeLayout>
 
 
