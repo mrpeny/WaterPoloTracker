@@ -8,6 +8,7 @@
     <string name="period_timer">00:25</string>
     <string name="foul_title">Fouls</string>
     <string name="timeout_title">Timeouts</string>
+    <string name="possession_time">Possession time</string>
 
     <!-- Home team related strings -->
     <string name="home_name">Home</string>
@@ -31,4 +32,5 @@
 
     <!-- Image description -->
     <string name="water_polo_ball_description">Water polo ball indicating ball possession</string>
+    <string name="background_image_description">Waves of a water polo pool</string>
 </resources>

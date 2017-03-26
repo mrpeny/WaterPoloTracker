@@ -1,203 +1,228 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
     tools:context="com.example.mrpeny.waterpolotracker.MainActivity">
 
-    <LinearLayout
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:alpha="0.5"
+        android:contentDescription="@string/background_image_description"
+        android:scaleType="centerCrop"
+        android:src="@drawable/pool4" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/game_time_text_view"
-                style="@style/game_time_style"
-                android:text="@string/game_timer" />
-
-            <TextView
-                android:id="@+id/period_title_text_view"
-                style="@style/period_title_style"
-                android:layout_below="@id/game_time_text_view"
-                android:text="@string/period_time_title" />
-
-            <TextView
-                android:id="@+id/period_counter_text_view"
-                style="@style/period_counter_style"
-                android:layout_below="@id/game_time_text_view"
-                android:layout_toEndOf="@id/period_title_text_view"
-                android:layout_toRightOf="@id/period_title_text_view"
-                android:text="@string/period_count" />
-
-            <TextView
-                android:id="@+id/period_timer_text_view"
-                style="@style/period_timer_style"
-                android:layout_below="@id/period_title_text_view"
-                android:text="@string/period_timer" />
-
-        </RelativeLayout>
+    <android.support.v4.widget.NestedScrollView
+        style="@style/general_layout_styles"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            style="@style/container_layout_style"
+            android:orientation="vertical">
 
+            <!-- Header layout START -->
+            <RelativeLayout
+                android:id="@+id/header_relative_layout"
+                style="@style/general_layout_styles">
+
+                <LinearLayout
+                    android:id="@+id/period_wrapper_linear_layout"
+                    style="@style/period_wrapper_style">
+
+                    <TextView
+                        android:id="@+id/period_title_text_view"
+                        style="@style/period_title_style"
+                        android:text="@string/period_time_title" />
+
+                    <TextView
+                        android:id="@+id/period_counter_text_view"
+                        style="@style/period_counter_style"
+                        android:text="@string/period_count" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/game_time_text_view"
+                    style="@style/game_time_style"
+                    android:layout_below="@id/period_wrapper_linear_layout"
+                    android:text="@string/game_timer" />
+
+                <TextView
+                    android:id="@+id/possession_time_title_text_view"
+                    style="@style/possession_time_title_style"
+                    android:layout_below="@id/game_time_text_view"
+                    android:text="@string/possession_time" />
+
+                <TextView
+                    android:id="@+id/period_timer_text_view"
+                    style="@style/period_timer_style"
+                    android:layout_below="@id/possession_time_title_text_view"
+                    android:text="@string/period_timer" />
+
+            </RelativeLayout>
+            <!-- Header layout END -->
+
+            <!-- Content layout START -->
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:id="@+id/content_relative_layout"
+                style="@style/general_layout_styles"
+                android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/home_ball_image_view"
-                    style="@style/ball_style"
-                    android:contentDescription="@string/water_polo_ball_description"
-                    android:src="@drawable/water_polo_ball_16" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/home_name_text_view"
-                    style="@style/team_name_style"
-                    android:text="@string/home_name" />
+                    <ImageView
+                        android:id="@+id/home_ball_image_view"
+                        style="@style/ball_style"
+                        android:contentDescription="@string/water_polo_ball_description"
+                        android:src="@drawable/water_polo_ball_24" />
 
-                <TextView
-                    android:id="@+id/home_score_count_text_view"
-                    style="@style/team_score_count_style"
-                    android:text="@string/home_score_count" />
+                    <TextView
+                        android:id="@+id/home_name_text_view"
+                        style="@style/team_name_style"
+                        android:text="@string/home_name" />
 
-                <TextView
-                    android:id="@+id/home_foul_title_text_view"
-                    style="@style/team_foul_title_style"
-                    android:text="@string/foul_title" />
+                    <TextView
+                        android:id="@+id/home_score_count_text_view"
+                        style="@style/team_score_count_style"
+                        android:text="@string/home_score_count" />
 
-                <TextView
-                    android:id="@+id/home_foul_counter_text_view"
-                    style="@style/team_foul_counter_style"
-                    android:text="@string/home_foul_count" />
+                    <TextView
+                        android:id="@+id/home_foul_title_text_view"
+                        style="@style/team_foul_title_style"
 
-                <TextView
-                    android:id="@+id/home_timeout_title_text_view"
-                    style="@style/team_timeout_title_style"
-                    android:text="@string/timeout_title" />
+                        android:text="@string/foul_title" />
 
-                <TextView
-                    android:id="@+id/home_timeout_timer1_text_view"
-                    style="@style/team_timeout_timer_style"
-                    android:text="@string/home_timeout_timer1" />
+                    <TextView
+                        android:id="@+id/home_foul_counter_text_view"
+                        style="@style/team_foul_counter_style"
+                        android:text="@string/home_foul_count" />
 
-                <TextView
-                    android:id="@+id/home_timeout_timer2_text_view"
-                    style="@style/team_timeout_timer_style"
-                    android:text="@string/home_timeout_timer2" />
+                    <TextView
+                        android:id="@+id/home_timeout_title_text_view"
+                        style="@style/team_timeout_title_style"
+                        android:text="@string/timeout_title" />
+
+                    <TextView
+                        android:id="@+id/home_timeout_timer1_text_view"
+                        style="@style/team_timeout_timer_style"
+                        android:text="@string/home_timeout_timer1" />
+
+                    <TextView
+                        android:id="@+id/home_timeout_timer2_text_view"
+                        style="@style/team_timeout_timer_style"
+                        android:text="@string/home_timeout_timer2" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="@dimen/divider_width"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/black" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/guest_ball_image_view"
+                        style="@style/ball_style"
+                        android:contentDescription="@string/water_polo_ball_description"
+                        android:src="@drawable/water_polo_ball_24"
+                        android:visibility="invisible" />
+
+                    <TextView
+                        android:id="@+id/guest_name_text_view"
+                        style="@style/team_name_style"
+                        android:text="@string/guest_name" />
+
+                    <TextView
+                        android:id="@+id/guest_score_count_text_view"
+                        style="@style/team_score_count_style"
+                        android:text="@string/guest_score_count" />
+
+                    <TextView
+                        android:id="@+id/guest_foul_title_text_view"
+                        style="@style/team_foul_title_style"
+                        android:text="@string/foul_title" />
+
+                    <TextView
+                        android:id="@+id/guest_foul_counter_text_view"
+                        style="@style/team_foul_counter_style"
+                        android:text="@string/guest_foul_count" />
+
+                    <TextView
+                        android:id="@+id/guest_timeout_title_text_view"
+                        style="@style/team_timeout_title_style"
+                        android:text="@string/timeout_title" />
+
+                    <TextView
+                        android:id="@+id/guest_timeout_timer1_text_view"
+                        style="@style/team_timeout_timer_style"
+                        android:text="@string/guest_timeout_timer1" />
+
+                </LinearLayout>
 
             </LinearLayout>
+            <!-- Content layout END-->
 
-            <View
-                android:layout_width="@dimen/divider_width"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
-
+            <!-- Button bar layout START -->
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                style="@style/general_layout_styles"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/guest_ball_image_view"
-                    style="@style/ball_style"
-                    android:contentDescription="@string/water_polo_ball_description"
-                    android:src="@drawable/water_polo_ball_16"
-                    android:visibility="invisible" />
+                <LinearLayout
+                    android:id="@+id/top_button_bar"
+                    style="@style/button_bar_linear_layout_style">
 
-                <TextView
-                    android:id="@+id/guest_name_text_view"
-                    style="@style/team_name_style"
-                    android:text="@string/guest_name" />
+                    <Button
+                        android:id="@+id/home_goal_button"
+                        style="@style/general_button_style"
+                        android:text="@string/goal" />
 
-                <TextView
-                    android:id="@+id/guest_score_count_text_view"
-                    style="@style/team_score_count_style"
-                    android:text="@string/guest_score_count" />
+                    <Button
+                        android:id="@+id/start_game_button"
+                        style="@style/general_button_style"
+                        android:text="@string/start" />
 
-                <TextView
-                    android:id="@+id/guest_foul_title_text_view"
-                    style="@style/team_foul_title_style"
-                    android:text="@string/foul_title" />
+                    <Button
+                        android:id="@+id/guest_goal_button"
+                        style="@style/general_button_style"
+                        android:text="@string/goal" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/guest_foul_counter_text_view"
-                    style="@style/team_foul_counter_style"
-                    android:text="@string/guest_foul_count" />
+                <LinearLayout
+                    android:id="@+id/bottom_button_bar"
+                    style="@style/button_bar_linear_layout_style">
 
-                <TextView
-                    android:id="@+id/guest_timeout_title_text_view"
-                    style="@style/team_timeout_title_style"
-                    android:text="@string/timeout_title" />
+                    <Button
+                        android:id="@+id/home_possession_button"
+                        style="@style/general_button_style"
+                        android:text="@string/possess" />
 
-                <TextView
-                    android:id="@+id/guest_timeout_timer1_text_view"
-                    style="@style/team_timeout_timer_style"
-                    android:text="@string/guest_timeout_timer1" />
+                    <Button
+                        android:id="@+id/reset_button"
+                        style="@style/general_button_style"
+                        android:text="@string/reset" />
+
+                    <Button
+                        android:id="@+id/guest_possession_button"
+                        style="@style/general_button_style"
+                        android:text="@string/possess" />
+                </LinearLayout>
 
             </LinearLayout>
+            <!-- Button bar layout END -->
 
         </LinearLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-
-            <LinearLayout
-                android:id="@+id/bottom_button_bar"
-                style="@style/button_bar_linear_layout_style"
-                android:layout_alignParentBottom="true">
-
-                <Button
-                    android:id="@+id/home_possession_button"
-                    style="@style/general_button_style"
-                    android:text="@string/possess" />
-
-                <Button
-                    android:id="@+id/reset_button"
-                    style="@style/general_button_style"
-                    android:text="@string/reset" />
-
-                <Button
-                    android:id="@+id/guest_possession_button"
-                    style="@style/general_button_style"
-                    android:text="@string/possess" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/top_button_bar"
-                style="@style/button_bar_linear_layout_style"
-                android:layout_above="@id/bottom_button_bar">
-
-                <Button
-                    android:id="@+id/home_goal_button"
-                    style="@style/general_button_style"
-                    android:text="@string/goal" />
-
-                <Button
-                    android:id="@+id/start_game_button"
-                    style="@style/general_button_style"
-                    android:text="@string/start" />
-
-                <Button
-                    android:id="@+id/guest_goal_button"
-                    style="@style/general_button_style"
-                    android:text="@string/goal" />
-            </LinearLayout>
-
-        </RelativeLayout>
-
-    </LinearLayout>
-
-</ScrollView>
+    </android.support.v4.widget.NestedScrollView>
+</RelativeLayout>
