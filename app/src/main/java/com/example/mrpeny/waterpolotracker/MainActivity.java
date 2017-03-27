@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // Start-stop button behaviour
     public void startPauseResumeGame(View view) {
         if (!countDownTimer.hasStarted() || countDownTimer.wasCancelled()) {
             countDownTimer.start();
