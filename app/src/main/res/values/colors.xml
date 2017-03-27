@@ -6,4 +6,5 @@
     <color name="colorAccent">#f2c91e</color>
     <color name="color_button_background">@color/colorPrimary</color>
     <color name="timeout_color">@android:color/holo_red_dark</color>
+    <color name="disabled_button">@android:color/darker_gray</color>
 </resources>

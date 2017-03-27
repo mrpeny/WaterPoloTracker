@@ -1,9 +1,5 @@
 package com.example.mrpeny.waterpolotracker;
 
-/**
- * Created by MrPeny on 2017. 03. 26..
- */
-
 /*
  * Copyright (C) 2008 The Android Open Source Project
  *
@@ -120,6 +116,7 @@ public abstract class CountDownTimer {
     public final void cancel() {
         mHandler.removeMessages(MSG);
         mCancelled = true;
+        mStarted = false;
     }
 
     /**
@@ -165,7 +162,7 @@ public abstract class CountDownTimer {
         return mCancelled;
     }
 
-    public boolean hasStarted() {
+    public boolean isStarted() {
         return this.mStarted;
     }
 

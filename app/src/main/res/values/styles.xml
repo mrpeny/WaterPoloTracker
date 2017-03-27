@@ -16,11 +16,12 @@
     <style name="general_layout_styles">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginBottom">@dimen/general_margin_bottom</item>
+        <item name="android:paddingTop">@dimen/general_margins</item>
     </style>
 
-    <style name="container_layout_style" parent="general_layout_styles">
-
+    <style name="container_layout_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
 
     <style name="TextColor">
@@ -39,7 +40,7 @@
     </style>
 
     <style name="period_wrapper_style" parent="general_header_style">
-        <item name="android:layout_marginTop">@dimen/general_separator_spaces</item>
+
     </style>
 
     <style name="period_title_style" parent="general_header_style">
@@ -51,9 +52,9 @@
         <item name="android:layout_marginLeft">8dp</item>
     </style>
 
-    <style name="period_timer_style" parent="general_header_style">
+    <style name="possession_timer_style" parent="general_header_style">
         <item name="android:textSize">32sp</item>
-        <item name="android:layout_marginBottom">@dimen/general_margin_bottom</item>
+        <item name="android:layout_marginBottom">@dimen/general_margins</item>
     </style>
 
     <style name="possession_time_title_style" parent="general_header_style">
@@ -68,7 +69,7 @@
     </style>
 
     <style name="ball_style" parent="general_content_style">
-        <item name="android:layout_marginBottom">@dimen/general_margin_bottom</item>
+        <item name="android:layout_marginBottom">@dimen/general_margins</item>
     </style>
 
     <style name="team_name_style" parent="general_content_style">
@@ -99,6 +100,7 @@
     <style name="button_bar_linear_layout_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">@dimen/general_margins</item>
     </style>
 
     <style name="general_button_style">
@@ -107,10 +109,6 @@
         <item name="android:layout_weight">1</item>
         <item name="android:layout_marginLeft">8dp</item>
         <item name="android:layout_marginRight">8dp</item>
-    </style>
-
-    <style name="top_button_bar_style" parent="button_bar_linear_layout_style">
-        <item name="android:layout_marginBottom">@dimen/general_margin_bottom</item>
     </style>
 
 </resources>

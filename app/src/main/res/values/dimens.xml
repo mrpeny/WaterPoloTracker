@@ -7,5 +7,5 @@
     <dimen name="general_separator_spaces">16dp</dimen>
 
     <!-- Content dimensions -->
-    <dimen name="general_margin_bottom">8dp</dimen>
+    <dimen name="general_margins">8dp</dimen>
 </resources>
