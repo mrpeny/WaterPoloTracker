@@ -4,25 +4,22 @@
     <!-- Game related titles and counters -->
     <string name="game_timer">08:00</string>
     <string name="period_time_title">Period</string>
-    <string name="period_count">2</string>
+    <string name="period_count">1</string>
+    <string name="possession_time">Possession time</string>
     <string name="possession_timer">00:30</string>
     <string name="foul_title">Fouls</string>
     <string name="timeout_title">Timeouts</string>
-    <string name="possession_time">Possession time</string>
+    <string name="timeout_timer">00:00</string>
 
     <!-- Home team related strings -->
     <string name="home_name">Home</string>
     <string name="home_score_count">0</string>
-    <string name="home_foul_count">5</string>
-    <string name="home_timeout_timer1">00:17</string>
-    <string name="home_timeout_timer2">00:03</string>
+    <string name="home_foul_count">0</string>
 
     <!-- Guest team related strings -->
     <string name="guest_name">Guest</string>
     <string name="guest_score_count">0</string>
-    <string name="guest_foul_count">3</string>
-    <string name="guest_timeout_timer1">00:15</string>
-    <string name="guest_timeout_timer2">00:01</string>
+    <string name="guest_foul_count">0</string>
 
     <!-- Button strings -->
     <string name="start">Start</string>
@@ -35,4 +32,5 @@
     <!-- Image description -->
     <string name="water_polo_ball_description">Water polo ball indicating ball possession</string>
     <string name="background_image_description">Waves of a water polo pool</string>
+    <string name="foul">Foul</string>
 </resources>

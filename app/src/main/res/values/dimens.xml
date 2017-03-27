@@ -8,4 +8,7 @@
 
     <!-- Content dimensions -->
     <dimen name="general_margins">8dp</dimen>
+
+    <!-- Button dimensions -->
+    <dimen name="button_margin">4dp</dimen>
 </resources>

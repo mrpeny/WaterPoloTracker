@@ -107,16 +107,6 @@
                         style="@style/team_timeout_title_style"
                         android:text="@string/timeout_title" />
 
-                    <TextView
-                        android:id="@+id/home_timeout_timer1_text_view"
-                        style="@style/team_timeout_timer_style"
-                        android:text="@string/home_timeout_timer1" />
-
-                    <TextView
-                        android:id="@+id/home_timeout_timer2_text_view"
-                        style="@style/team_timeout_timer_style"
-                        android:text="@string/home_timeout_timer2" />
-
                 </LinearLayout>
 
                 <View
@@ -162,11 +152,6 @@
                         android:id="@+id/guest_timeout_title_text_view"
                         style="@style/team_timeout_title_style"
                         android:text="@string/timeout_title" />
-
-                    <TextView
-                        android:id="@+id/guest_timeout_timer1_text_view"
-                        style="@style/team_timeout_timer_style"
-                        android:text="@string/guest_timeout_timer1" />
 
                 </LinearLayout>
 
@@ -222,6 +207,25 @@
                         style="@style/general_button_style"
                         android:onClick="guestPossesses"
                         android:text="@string/possess" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/button_bar_linear_layout_style">
+
+                    <Button
+                        android:id="@+id/homer_foul_button"
+                        style="@style/general_button_style"
+                        android:onClick="addHomeFoul"
+                        android:text="@string/foul" />
+
+                    <Button
+                        style="@style/general_button_style"
+                        android:visibility="invisible" />
+
+                    <Button
+                        android:id="@+id/guest_foul_button"
+                        style="@style/general_button_style"
+                        android:onClick="addGuestFoul"
+                        android:text="@string/foul" />
                 </LinearLayout>
 
             </LinearLayout>

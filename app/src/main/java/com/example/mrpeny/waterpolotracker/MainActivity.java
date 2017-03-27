@@ -6,36 +6,49 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private final String finishedTimerState = "00:00";
-    TextView gameTimerTextView, possessionTimerTextView, homeScoreCountTextView, guestScoreCountTextView;
+    LinearLayout homeLinearLayout, guestLinearLayout;
+    TextView periodCounterTextView, gameTimerTextView, possessionTimerTextView, homeScoreCountTextView,
+            guestScoreCountTextView, homeFoulCounterTextView, guestFoulCounterTextView, homeTimeOutTimer;
     ImageView homeBallImageView, guestBallImageView;
-    Button resetButton, startButton, homeGoalButton, guestGoalButton, homePossessionButton, guestPossessionButton;
-    String start;
-    String stop;
-    String resume;
-    String reset;
-    String initialGameTime;
-    String initialPossessionTime;
-    CountDownTimer gameCountDownTimer;
-    CountDownTimer possessionCountDownTimer;
+    Button resetButton, startButton, homeGoalButton, guestGoalButton, homePossessionButton,
+            guestPossessionButton, homeFoulButton, guestFoulButton;
+    String start, stop, resume, reset, initialGameTime, initialPossessionTime;
+    CountDownTimer gameCountDownTimer, possessionCountDownTimer;
+    List<CountDownTimer> guestFoulsCountDownTimerList;
+    List<CountDownTimer> homeFoulsCountDownTimerList;
 
-    private int homeScoreCount;
-    private int guestScoreCount;
+    private int homeScoreCount, guestScoreCount, periodCount, homeFoulsCount, guestFoulsCount;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        periodCount = 1;
         homeScoreCount = 0;
         guestScoreCount = 0;
+        homeFoulsCount = 0;
+        guestFoulsCount = 0;
 
+        homeLinearLayout = (LinearLayout) findViewById(R.id.home_linear_layout);
+        guestLinearLayout = (LinearLayout) findViewById(R.id.guest_linear_layout);
+
+        periodCounterTextView = (TextView) findViewById(R.id.period_counter_text_view);
         gameTimerTextView = (TextView) findViewById(R.id.game_time_text_view);
         possessionTimerTextView = (TextView) findViewById(R.id.possession_timer_text_view);
         homeScoreCountTextView = (TextView) findViewById(R.id.home_score_count_text_view);
         guestScoreCountTextView = (TextView) findViewById(R.id.guest_score_count_text_view);
+        homeFoulCounterTextView = (TextView) findViewById(R.id.home_foul_counter_text_view);
+        guestFoulCounterTextView = (TextView) findViewById(R.id.guest_foul_counter_text_view);
+        guestFoulsCountDownTimerList = new ArrayList<>();
+        homeFoulsCountDownTimerList = new ArrayList<>();
 
         homeBallImageView = (ImageView) findViewById(R.id.home_ball_image_view);
         guestBallImageView = (ImageView) findViewById(R.id.guest_ball_image_view);
@@ -46,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
         guestGoalButton = (Button) findViewById(R.id.guest_goal_button);
         homePossessionButton = (Button) findViewById(R.id.home_possession_button);
         guestPossessionButton = (Button) findViewById(R.id.guest_possession_button);
+        homeFoulButton = (Button) findViewById(R.id.homer_foul_button);
+        guestFoulButton = (Button) findViewById(R.id.guest_foul_button);
 
         start = getString(R.string.start);
         stop = getString(R.string.stop);
@@ -67,11 +82,25 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                possessionCountDownTimer.cancel();
+                this.cancel();
+                for (CountDownTimer countDownTimer : homeFoulsCountDownTimerList) {
+                    countDownTimer.cancel();
+                }
+
+                for (CountDownTimer countDownTimer : guestFoulsCountDownTimerList) {
+                    countDownTimer.cancel();
+                }
+
                 gameTimerTextView.setText(finishedTimerState);
                 gameTimerTextView.setTextColor(Color.RED);
-                possessionCountDownTimer.cancel();
+                possessionTimerTextView.setTextColor(Color.RED);
 
-                disableGameOverButtons(true);
+                periodCount++;
+
+                disablePausedButtons(true);
+
+                startButton.setText("Next Period");
             }
         };
 
@@ -95,7 +124,18 @@ public class MainActivity extends AppCompatActivity {
     // Start-stop button behaviour
     public void startPauseResumeGame(View view) {
         if (!gameCountDownTimer.isStarted()) {
+            periodCounterTextView.setText(String.valueOf(periodCount));
             gameCountDownTimer.start();
+            gameTimerTextView.setTextColor(Color.BLACK);
+            possessionTimerTextView.setTextColor(Color.BLACK);
+            gameTimerTextView.setText(initialGameTime);
+            possessionTimerTextView.setText(initialPossessionTime);
+            homeBallImageView.setVisibility(View.INVISIBLE);
+            guestBallImageView.setVisibility(View.INVISIBLE);
+            homeLinearLayout.removeViews(6, homeFoulsCountDownTimerList.size());
+            homeFoulsCountDownTimerList.clear();
+            guestLinearLayout.removeViews(6, guestFoulsCountDownTimerList.size());
+            guestFoulsCountDownTimerList.clear();
             disablePausedButtons(false);
             startButton.setText(this.stop);
         } else {
@@ -105,12 +145,28 @@ public class MainActivity extends AppCompatActivity {
                     possessionCountDownTimer.resume();
                 }
 
+                for (CountDownTimer countDownTimer : homeFoulsCountDownTimerList) {
+                    countDownTimer.resume();
+                }
+
+                for (CountDownTimer countDownTimer : guestFoulsCountDownTimerList) {
+                    countDownTimer.resume();
+                }
+
                 disablePausedButtons(false);
 
                 startButton.setText(this.stop);
             } else {
                 gameCountDownTimer.pause();
                 possessionCountDownTimer.pause();
+
+                for (CountDownTimer countDownTimer : homeFoulsCountDownTimerList) {
+                    countDownTimer.pause();
+                }
+
+                for (CountDownTimer countDownTimer : guestFoulsCountDownTimerList) {
+                    countDownTimer.pause();
+                }
 
                 disablePausedButtons(true);
 
@@ -120,6 +176,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void reset(View view) {
+        periodCount = 1;
+        homeScoreCount = 0;
+        guestScoreCount = 0;
+        homeFoulsCount = 0;
+        guestFoulsCount = 0;
+
         gameCountDownTimer.cancel();
         gameTimerTextView.setTextColor(Color.BLACK);
         gameTimerTextView.setText(initialGameTime);
@@ -131,10 +193,21 @@ public class MainActivity extends AppCompatActivity {
         homeBallImageView.setVisibility(View.INVISIBLE);
         guestBallImageView.setVisibility(View.INVISIBLE);
 
-        homeScoreCount = 0;
-        guestScoreCount = 0;
+        if (homeFoulsCountDownTimerList.size() > 0) {
+            homeLinearLayout.removeViews(6, homeFoulsCountDownTimerList.size());
+            homeFoulsCountDownTimerList.clear();
+        }
+
+        if (guestFoulsCountDownTimerList.size() > 0) {
+            guestLinearLayout.removeViews(6, guestFoulsCountDownTimerList.size());
+            guestFoulsCountDownTimerList.clear();
+        }
+
+        periodCounterTextView.setText(String.valueOf(periodCount));
         homeScoreCountTextView.setText(String.valueOf(homeScoreCount));
         guestScoreCountTextView.setText(String.valueOf(guestScoreCount));
+        homeFoulCounterTextView.setText(String.valueOf(homeFoulsCount));
+        guestFoulCounterTextView.setText(String.valueOf(guestFoulsCount));
 
         startButton.setText(this.start);
         disableGameOverButtons(false);
@@ -165,6 +238,7 @@ public class MainActivity extends AppCompatActivity {
             }
             guestBallImageView.setVisibility(View.INVISIBLE);
             homeBallImageView.setVisibility(View.VISIBLE);
+            possessionTimerTextView.setTextColor(Color.BLACK);
         }
     }
 
@@ -179,6 +253,60 @@ public class MainActivity extends AppCompatActivity {
             homeBallImageView.setVisibility(View.INVISIBLE);
             guestBallImageView.setVisibility(View.VISIBLE);
         }
+    }
+
+    public void addHomeFoul(View view) {
+        final TextView homeTimeoutTextView = (TextView) getLayoutInflater().inflate(R.layout.timeout_timer_text_view_template, null);
+
+        CountDownTimer foulsCountDownTimer = new CountDownTimer(20000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                long mm = millisUntilFinished / 1000 / 60;
+                long ss = millisUntilFinished / 1000 % 60;
+
+                homeTimeoutTextView.setText(String.format("%1$02d:%2$02d", mm, ss));
+            }
+
+            @Override
+            public void onFinish() {
+                homeLinearLayout.removeView(homeTimeoutTextView);
+                homeFoulsCountDownTimerList.remove(this);
+            }
+        }.start();
+
+        homeFoulsCountDownTimerList.add(foulsCountDownTimer);
+
+        homeLinearLayout.addView(homeTimeoutTextView);
+
+        homeFoulsCount++;
+        homeFoulCounterTextView.setText(Integer.toString(homeFoulsCount));
+    }
+
+    public void addGuestFoul(View view) {
+        final TextView guestTimeoutTextView = (TextView) getLayoutInflater().inflate(R.layout.timeout_timer_text_view_template, null);
+
+        CountDownTimer foulsCountDownTimer = new CountDownTimer(20000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                long mm = millisUntilFinished / 1000 / 60;
+                long ss = millisUntilFinished / 1000 % 60;
+
+                guestTimeoutTextView.setText(String.format("%1$02d:%2$02d", mm, ss));
+            }
+
+            @Override
+            public void onFinish() {
+                guestLinearLayout.removeView(guestTimeoutTextView);
+                guestFoulsCountDownTimerList.remove(this);
+            }
+        }.start();
+
+        guestFoulsCountDownTimerList.add(foulsCountDownTimer);
+
+        guestLinearLayout.addView(guestTimeoutTextView);
+
+        guestFoulsCount++;
+        guestFoulCounterTextView.setText(Integer.toString(guestFoulsCount));
     }
 
     /*
@@ -200,6 +328,8 @@ public class MainActivity extends AppCompatActivity {
         disableButton(homeGoalButton, disabled);
         disableButton(homePossessionButton, disabled);
         disableButton(guestPossessionButton, disabled);
+        disableButton(homeFoulButton, disabled);
+        disableButton(guestFoulButton, disabled);
     }
 
     private void disablePausedButtons(boolean disabled) {
@@ -207,7 +337,7 @@ public class MainActivity extends AppCompatActivity {
         disableButton(homeGoalButton, disabled);
         disableButton(homePossessionButton, disabled);
         disableButton(guestPossessionButton, disabled);
+        disableButton(homeFoulButton, disabled);
+        disableButton(guestFoulButton, disabled);
     }
-
-
 }
