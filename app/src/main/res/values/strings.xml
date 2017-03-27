@@ -2,7 +2,7 @@
     <string name="app_name">Water polo Tracker</string>
 
     <!-- Game related titles and counters -->
-    <string name="game_timer">04:52</string>
+    <string name="game_timer">08:00</string>
     <string name="period_time_title">Period</string>
     <string name="period_count">2</string>
     <string name="period_timer">00:25</string>
@@ -26,6 +26,8 @@
 
     <!-- Button strings -->
     <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="resume">Resume</string>
     <string name="goal">Goal</string>
     <string name="possess">Possess</string>
     <string name="reset">Reset</string>
