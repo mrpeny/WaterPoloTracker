@@ -154,14 +154,20 @@ public abstract class CountDownTimer {
         return mPauseTime;
     }
 
+    /**
+     * Returns paused state of the countdown.
+     *
+     * @return the pause state of the countdown
+     */
     public boolean isPaused() {
         return this.mPaused;
     }
 
-    public boolean wasCancelled() {
-        return mCancelled;
-    }
-
+    /**
+     * Returnw whether the countdown has been started yet.
+     *
+     * @return the started state of the countdown.
+     */
     public boolean isStarted() {
         return this.mStarted;
     }

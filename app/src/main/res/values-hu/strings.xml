@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="rn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Vízilabda Stopper</string>
+    <string name="background_image_description">Vízilabda medence hullámai</string>
+    <string name="foul">Kiállítás</string>
+    <string name="foul_title">Kiállítások</string>
+    <string name="game_over">Vége a játéknak! Nyomd meg az újraindít gombot az új játékhoz!</string>
+    <string name="goal">Gól</string>
+    <string name="guest_name">Vendég</string>
+    <string name="home_name">Hazai</string>
+    <string name="period_over">Negyed vége! Nyomd meg a következő nyegyed gombot a folytatáshoz!</string>
+    <string name="period_count"><xliff:g example="2" id="period_number">%1$d</xliff:g>. negyed</string>
+    <string name="possess">Labdaszerzés</string>
+    <string name="possession_time">Támadóidő</string>
+    <string name="reset">Újraindít</string>
+    <string name="resume">Folytatás</string>
+    <string name="timeout_title">Kiállítások</string>
+    <string name="water_polo_ball_description">Vízilabda, amely a labdabirtoklást mutatja</string>
+    <string name="next_period">Következő negyed</string>
+</resources>

@@ -35,12 +35,8 @@
         <item name="android:layout_centerHorizontal">true</item>
     </style>
 
-    <style name="game_time_style" parent="general_header_style">
+    <style name="period_time_style" parent="general_header_style">
         <item name="android:textSize">32sp</item>
-    </style>
-
-    <style name="period_wrapper_style" parent="general_header_style">
-
     </style>
 
     <style name="period_title_style" parent="general_header_style">
